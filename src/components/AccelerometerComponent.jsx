@@ -22,7 +22,7 @@ function AccelerometerComponent() {
       setMaxLaz(laz);
     }
   }, [laz]);
-  return (
+  return laz == "" ? (
     <div>
       <p>lx-value = {lax}</p>
       <p>ly-value = {lay}</p>
@@ -30,6 +30,13 @@ function AccelerometerComponent() {
       <p>max-lz-value = {maxLaz}</p>
       <p>max height thrown = {height} m</p>
     </div>
+  ) : (
+    <p>
+      Incompatible device Use a mobile or tablet and ensure you are using a
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor#browser_compatibility">
+        compatible browser
+      </a>
+    </p>
   );
 }
 
