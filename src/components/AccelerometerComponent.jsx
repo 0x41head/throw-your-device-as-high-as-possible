@@ -17,11 +17,9 @@ function AccelerometerComponent() {
   laSensor.start();
 
   useEffect(() => {
-    if (maxLaz > laSensor.z) {
-      if (height < (laSensor.z / 60) ** 2 / (2 * 9.8)) {
-        setHeight((laSensor.z / 60) ** 2 / (2 * 9.8));
-        setMaxLaz(laSensor.z);
-      }
+    if (maxLaz > laz) {
+      setHeight((laz / 60) ** 2 / (2 * 9.8));
+      setMaxLaz(laz);
     }
   }, [laz]);
   return (
