@@ -17,9 +17,9 @@ function AccelerometerComponent() {
       setLaZ(laSensor.z);
     });
     laSensor.start();
-    isBrowserCompatible(true);
+    setIsBrowserCompatible(true);
   } catch (error) {
-    isBrowserCompatible(false);
+    setIsBrowserCompatible(false);
   }
 
   useEffect(() => {
