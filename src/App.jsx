@@ -13,7 +13,7 @@ function App() {
 
     console.log("inside use effect ");
     acl.start();
-  }, []);
+  });
 
   return <>hello</>;
 }
