@@ -4,17 +4,23 @@ function AccelerometerComponent() {
   const [lax, setLaX] = useState("");
   const [lay, setLaY] = useState("");
   const [laz, setLaZ] = useState("");
+  const [isBrowserCompatible, setIsBrowserCompatible] = useState(false);
   const [maxLaz, setMaxLaz] = useState(0);
   const [height, setHeight] = useState(0);
 
-  let laSensor = new LinearAccelerationSensor({ frequency: 60 });
+  try {
+    let laSensor = new LinearAccelerationSensor({ frequency: 60 });
 
-  laSensor.addEventListener("reading", (e) => {
-    setLaX(laSensor.x);
-    setLaY(laSensor.y);
-    setLaZ(laSensor.z);
-  });
-  laSensor.start();
+    laSensor.addEventListener("reading", () => {
+      setLaX(laSensor.x);
+      setLaY(laSensor.y);
+      setLaZ(laSensor.z);
+    });
+    laSensor.start();
+    isBrowserCompatible(true);
+  } catch (error) {
+    isBrowserCompatible(false);
+  }
 
   useEffect(() => {
     if (maxLaz > laz) {
@@ -22,7 +28,7 @@ function AccelerometerComponent() {
       setMaxLaz(laz);
     }
   }, [laz]);
-  return laz == "" ? (
+  return isBrowserCompatible ? (
     <div>
       <p>lx-value = {lax}</p>
       <p>ly-value = {lay}</p>
