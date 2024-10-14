@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function AccelerometerComponent() {
   const [lax, setLaX] = useState("");
@@ -13,17 +13,17 @@ function AccelerometerComponent() {
     setLaX(laSensor.x);
     setLaY(laSensor.y);
     setLaZ(laSensor.z);
-    console.log(`Linear acceleration along the X-axis ${laSensor.x}`);
-    console.log(`Linear acceleration along the Y-axis ${laSensor.y}`);
-    console.log(`Linear acceleration along the Z-axis ${laSensor.z}`);
+  });
+  laSensor.start();
+
+  useEffect(() => {
     if (maxLaz > laSensor.z) {
       if (height < (laSensor.z / 60) ** 2 / (2 * 9.8)) {
         setHeight((laSensor.z / 60) ** 2 / (2 * 9.8));
         setMaxLaz(laSensor.z);
       }
     }
-  });
-  laSensor.start();
+  }, [laz]);
   return (
     <div>
       <p>lx-value = {lax}</p>
