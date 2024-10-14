@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import AccelerometerComponent from "./components/AccelerometerComponent";
 // import "./App.css";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     acl.start();
   });
 
-  return <>hello</>;
+  return <AccelerometerComponent />;
 }
 
 export default App;
