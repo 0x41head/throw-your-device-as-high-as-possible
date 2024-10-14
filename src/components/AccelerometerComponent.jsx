@@ -16,7 +16,7 @@ function AccelerometerComponent() {
     console.log(`Linear acceleration along the X-axis ${laSensor.x}`);
     console.log(`Linear acceleration along the Y-axis ${laSensor.y}`);
     console.log(`Linear acceleration along the Z-axis ${laSensor.z}`);
-    if (setMaxLaz > laSensor.z) {
+    if (maxLaz > laSensor.z) {
       setMaxLaz(laSensor.z);
       setHeight(laSensor.z ** 2 / (2 * 9.8));
     }
