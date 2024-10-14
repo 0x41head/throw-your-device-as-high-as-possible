@@ -17,8 +17,10 @@ function AccelerometerComponent() {
     console.log(`Linear acceleration along the Y-axis ${laSensor.y}`);
     console.log(`Linear acceleration along the Z-axis ${laSensor.z}`);
     if (maxLaz > laSensor.z) {
-      setMaxLaz(laSensor.z);
-      setHeight(laSensor.z ** 2 / (2 * 9.8));
+      if (height < (laSensor.z / 60) ** 2 / (2 * 9.8)) {
+        setHeight((laSensor.z / 60) ** 2 / (2 * 9.8));
+        setMaxLaz(laSensor.z);
+      }
     }
   });
   laSensor.start();
@@ -27,8 +29,8 @@ function AccelerometerComponent() {
       <p>lx-value = {lax}</p>
       <p>ly-value = {lay}</p>
       <p>lz-value = {laz}</p>
-      <p>max lz = {maxLaz}</p>
-      <p>max height thrown = {height}</p>
+      <p>max-lz-value = {maxLaz}</p>
+      <p>max height thrown = {height} m</p>
     </div>
   );
 }
