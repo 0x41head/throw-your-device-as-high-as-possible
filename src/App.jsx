@@ -1,8 +1,8 @@
-import AccelerometerComponent from "./components/AccelerometerComponent";
 import "./App.css";
+import CheckBrosweCompatibilityComponent from "./components/CheckBrowserCompatibilityComponent";
 
 function App() {
-  return <AccelerometerComponent />;
+  return <CheckBrosweCompatibilityComponent />;
 }
 
 export default App;

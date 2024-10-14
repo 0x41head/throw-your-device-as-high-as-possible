@@ -6,7 +6,6 @@ function AccelerometerComponent() {
   const [laz, setLaZ] = useState(null);
   const [maxLaz, setMaxLaz] = useState(0);
   const [height, setHeight] = useState(0);
-  const [isBrowserCompatible, setIsBrowserCompatible] = useState(false);
 
   let laSensor = new LinearAccelerationSensor({ frequency: 60 });
 
@@ -23,7 +22,6 @@ function AccelerometerComponent() {
       setHeight((laz * 0.1) ** 2 / (2 * 9.8));
       setMaxLaz(laz);
     }
-    if (laz != null) setIsBrowserCompatible(true);
   }, [laz]);
   return (
     <div>
