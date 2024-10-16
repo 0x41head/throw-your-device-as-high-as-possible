@@ -13,6 +13,7 @@ function AccelerometerComponent() {
     setLaX(laSensor.x);
     setLaY(laSensor.y);
     setLaZ(laSensor.z);
+    console.log(laSensor.z);
   });
 
   laSensor.start();
